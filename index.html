@@ -10,7 +10,7 @@
             text-align: center;
             background-color: #ffe6e6;
             color: #ff4d6d;
-            padding: 50px;
+            padding: 20px;
             overflow: hidden;
             position: relative;
         }
@@ -47,15 +47,17 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
             margin-top: 20px;
         }
         #valentineImage {
-            width: 300px;
+            width: 250px;
+            max-width: 90%;
             display: none;
             animation: fadeIn 2s ease-in-out, float 4s infinite alternate ease-in-out;
         }
         #bouquet {
-            font-size: 50px;
+            font-size: 40px;
             display: none;
             white-space: nowrap;
             animation: glow 2s infinite alternate;
@@ -80,6 +82,27 @@
             0% { transform: translateY(-100vh) rotate(0); }
             100% { transform: translateY(100vh) rotate(360deg); }
         }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .surprise-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            #openButton {
+                width: 80%;
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+            #hiddenMessage {
+                font-size: 18px;
+            }
+            #valentineImage {
+                width: 200px;
+            }
+            #bouquet {
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,18 +126,16 @@
 
         function animateBouquet() {
             const bouquet = document.getElementById('bouquet');
-            const flowers = ['💐', '🌸', '🌺', '🌷', '🌹', '💐']; // Flowers in order
-            bouquet.innerHTML = ''; // Clear previous flowers
+            const flowers = ['💐', '🌸', '🌺', '🌷', '🌹', '💐'];
+            bouquet.innerHTML = '';
             let i = 0;
-
             function addFlower() {
                 if (i < flowers.length) {
                     bouquet.innerHTML += flowers[i];
                     i++;
-                    setTimeout(addFlower, 500); // Add flowers one by one
+                    setTimeout(addFlower, 500);
                 }
             }
-
             addFlower();
         }
 
