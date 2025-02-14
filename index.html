@@ -43,7 +43,8 @@
             margin-top: 20px;
         }
         #valentineImage {
-            width: 300px;
+            width: 90%;
+            max-width: 300px;
             display: none;
             margin: 20px auto;
             animation: fadeIn 2s ease-in-out, float 4s infinite alternate ease-in-out;
@@ -74,6 +75,24 @@
         @keyframes fall {
             0% { transform: translateY(-100vh) rotate(0); }
             100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+            #openButton {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+            .message {
+                font-size: 20px;
+            }
+            #hiddenMessage {
+                font-size: 18px;
+            }
+            .bouquet {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
