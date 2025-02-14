@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise 💖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #ff4d6d;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .hidden {
+            display: none;
+        }
+        #openButton {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        #openButton:hover {
+            background-color: #ff1a4d;
+            transform: scale(1.1);
+        }
+        #hiddenMessage {
+            font-size: 22px;
+            color: #ff1a4d;
+            animation: bounceIn 1s ease-in-out, glow 2s infinite alternate;
+            margin-top: 20px;
+        }
+        #valentineImage {
+            width: 300px;
+            display: none;
+            margin: 20px auto;
+            animation: fadeIn 2s ease-in-out, float 4s infinite alternate ease-in-out;
+        }
+        .bouquet {
+            font-size: 50px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+            animation: fadeIn 2s ease-in-out, glow 2s infinite alternate;
+        }
+        .falling {
+            position: absolute;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px pink; }
+            100% { text-shadow: 0 0 15px red; }
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Open for a Surprise 💖</h1>
+    <button id="openButton" onclick="revealSurprise()">Open 💝</button>
+    <p id="hiddenMessage" class="hidden">You are the sweetest, most amazing person, and I cherish every moment with you! Happy Valentine's Day! ❤️</p>
+    <img id="valentineImage" src="jecilay.png" alt="A cute romantic image">
+    <div id="bouquet" class="bouquet">💐🌸🌺🌷🌹💐</div>
+    
+    <script>
+        function revealSurprise() {
+            document.getElementById('hiddenMessage').classList.remove('hidden');
+            document.getElementById('valentineImage').style.display = 'block';
+            document.getElementById('bouquet').style.display = 'block';
+            setInterval(createFallingElements, 500);
+        }
+        function createFallingElements() {
+            let heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('falling');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = '-50px';
+            heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+            
+            let flower = document.createElement('div');
+            flower.innerHTML = '🌸🌺🌷';
+            flower.classList.add('falling');
+            flower.style.left = Math.random() * window.innerWidth + 'px';
+            flower.style.top = '-50px';
+            flower.style.fontSize = Math.random() * 30 + 20 + 'px';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
